@@ -1,0 +1,26 @@
+{
+    "name": "paula/clinica_pediatrica",
+    "description": "Proyecto final de ciclo de Grado Superior DAW",
+    "type": "project",
+    "require": {
+        "philo/laravel-blade": "^3.1"
+    },
+    "license": "GPL",
+    
+    "autoload": {
+        "psr-4": {
+            "Clases\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Paula Salicio Geanini"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
+}
