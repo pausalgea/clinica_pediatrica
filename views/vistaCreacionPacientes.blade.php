@@ -1,0 +1,64 @@
+@extends('plantillas.plantilla1')
+@section('titulo')
+{{$titulo}}
+@endsection
+@section('encabezado')
+{{$encabezado}}
+<script>
+    fecha.max = new Date().toISOString().split("T")[0];
+</script>
+@endsection
+@section('contenido')
+<form method="POST" action="crearPaciente.php">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+
+                @if(isset($DNI)&& $DNI==false)
+                <label class="text-left" for="pacienteACrear">Ya hay un paciente con ese DNI en el sistema</label>
+                <input type="text" class="form-control" name="pacienteACrear" required readonly placeholder="Ya existe un paciente con ese DNI en el sistema">
+
+                @else
+                <label class="text-left" for="DNI">DNI </label>
+                <input type="text" class="form-control" name="DNI" required>
+                @endif
+            </div>
+            <div class="col">
+                <label class="text-left" for="nombre">Nombre </label>
+                <input type="text" class="form-control" name="nombre" required>
+            </div>
+
+
+
+        </div>
+        <div class="row">
+            <div class="col">
+
+                <label class="text-left" for="apellidos">Apellidos </label>
+                <input type="text" class="form-control" name="apellidos" class="form-select" required>
+
+
+            </div>
+            <div class="col">
+                <label class="text-left" for="fecha_nacimiento">Fecha de nacimiento </label>
+                <input type="date" class="form-control" max="<?= date('d-m-Y'); ?>" name="fecha_nacimiento" required>
+            </div>
+
+            <div class="col">
+                <label class="text-left" for="telefono">Teléfono </label>
+                <input type="text" class="form-control" name="telefono" required>
+            </div>
+
+
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" name="crear" value="Crear">Crear</button>
+        <button type="reset" class="btn btn-success">Limpiar</button>
+        <a href="gestionPaciente.php" class="btn btn-info" role="button">Volver</a>
+
+
+
+    </div>
+</form>
+@endsection

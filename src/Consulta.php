@@ -34,6 +34,23 @@ class Consulta extends Conexion
         $this->conexion = null;   
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function listadoConsultasMedico($login_medico) //método para mostrar los consultas, es un select a la bbdd
+    {
+        $ahora = new DateTime();
+        $unaSemanaMas = date('Y-m-d', strtotime("+1 week"));
+        $sentencia = "select * from consulta where fecha between '" . date_format($ahora, 'Y-m-d') . "' and '" . $unaSemanaMas . "' and login_medico=:l order by fecha,hora";
+        $stmt = $this->conexion->prepare($sentencia);
+        try {
+            $stmt->execute([
+                ':l'=>$login_medico
+            ]);
+        } catch (PDOException $ex) {
+            die("Error al recuperar: " . $ex->getMessage());
+        }
+        $this->conexion = null;
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
     
 
     public function comprobarConsultaLibre($fecha,$hora) //método para comprobar si el login está disponible

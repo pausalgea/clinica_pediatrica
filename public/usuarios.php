@@ -3,6 +3,7 @@
 require '../vendor/autoload.php';
 
 use Clases\Usuario;
+use Clases\Consulta;
 use Philo\Blade\Blade;
 
 
@@ -37,14 +38,23 @@ session_start();
             $usuarios=(new Usuario())->listadoUsuarios();
             $categoria=(new Usuario())->tipoUsuario($nombre);
             $tipo=$categoria[0];
-
+            if($tipo!="médico")
+            {
                 echo $blade
                 ->view()
                 ->make('vistaUsuarios', compact('titulo', 'encabezado', 'tipo','nombre','usuarios'))
                 ->render();
+            }
+            else
+            {
+                $consultas = (new Consulta())->listadoConsultasMedico($nombre);
+                $encabezado="Listado de consultas para esta semana";
+                echo $blade
+                ->view()
+                ->make('vistaUsuarios', compact('titulo', 'encabezado', 'tipo', 'nombre', 'consultas'))
+                ->render();
 
-
-            //falta medico
+            }
 
 
 
