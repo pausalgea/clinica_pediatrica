@@ -15,7 +15,11 @@
         <div class="row">
             <div class="col">
                 <label class="text-left" for="DNI">DNI del paciente </label> 4
+<<<<<<< HEAD
                 <input type="text" class="form-control" name="DNI" value={{$DNI}} placeholder={{$DNI}} readonly>
+=======
+                <input type="text" class="form-control" name="DNI" value={{DNI}} placeholder={{$DNI}} readonly>
+>>>>>>> f9b92fbb1822d02bfb5604049a934146d08a26df
             </div>
             <div class="col">
                 <label class="text-left" for="nombre">Nombre </label>

@@ -6,6 +6,7 @@
 {{$encabezado}}
 <script>
     fecha.max = new Date().toISOString().split("T")[0];
+<<<<<<< HEAD
 
 
 function cambiar()
@@ -25,6 +26,8 @@ if(document.getElementById('no_asegurado').checked)
     document.getElementById('label_asegurado').innerHTML='Número de seguridad social';
 
 }
+=======
+>>>>>>> f9b92fbb1822d02bfb5604049a934146d08a26df
 </script>
 @endsection
 @section('contenido')
@@ -71,6 +74,7 @@ if(document.getElementById('no_asegurado').checked)
 
 
         </div>
+<<<<<<< HEAD
         <div class="row">
             <div class="col">
                 ¿El paciente es asegurado?
@@ -90,6 +94,8 @@ if(document.getElementById('no_asegurado').checked)
         
         
         
+=======
+>>>>>>> f9b92fbb1822d02bfb5604049a934146d08a26df
         <br>
         <button type="submit" class="btn btn-primary" name="crear" value="Crear">Crear</button>
         <button type="reset" class="btn btn-success">Limpiar</button>
