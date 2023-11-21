@@ -2,9 +2,7 @@
 
 require '../vendor/autoload.php';
 
-use Clases\Consulta;
 use Clases\Paciente;
-use Clases\Usuario;
 use Philo\Blade\Blade;
 
 
@@ -12,7 +10,7 @@ $views = '../views';
 $cache = '../cache';
 $blade = new Blade($views, $cache);
 $titulo = '';
-$encabezado = 'Modificación de consulta';
+$encabezado = 'Modificación de paciente';
 session_start();
 
     function error($mensaje)
@@ -24,29 +22,30 @@ session_start();
     
     if (isset($_POST['modificar'])) { //si la variable modificar está definida, significa que el usuario
         // ha pulsado el botón modificar
-        $id=$_POST['consultaAModificar'];
-        $con=new Consulta();
-        $con->modificarConsulta($_POST['fecha'],$_POST['hora'],$_POST['login_medico'],$_POST['DNI'],$id);
-        $consultas=(new Consulta())->listadoConsultas();
+        $DNI=$_POST['DNI'];
+        $con=new Paciente();
+
+        $con->modificarPaciente($_POST['nombre'],$_POST['apellidos'],$_POST['fecha_nacimiento'],$_POST['telefono'],$DNI);
+        $pacientes=(new Paciente())->listarPacientes();
         $nombre=$_SESSION['login'];
+         $encabezado = 'Listado de pacientes';
 
         echo $blade
         ->view()
-        ->make('vistaConsultas', compact('titulo', 'encabezado','nombre','consultas'))
+        ->make('vistaPacientes', compact('titulo', 'encabezado','nombre','pacientes'))
         ->render();
 
 
     }
     else{
 
-        if(isset($_GET['id']))
+        if(isset($_GET['DNI']))
         {
-            $id_consulta=$_GET['id'];
-            $medicos=(new Usuario())->listadoMedicos();
+            $DNI=$_GET['DNI'];
             $pacientes=(new Paciente())->listarPacientes();
             echo $blade
             ->view()
-            ->make('vistaModificacionConsultas', compact('titulo', 'encabezado', 'id_consulta','medicos','pacientes'))
+            ->make('vistaModificacionPacientes', compact('titulo', 'encabezado', 'DNI','pacientes'))
             ->render();
         }
         

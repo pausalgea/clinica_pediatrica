@@ -34,16 +34,35 @@ class Consulta extends Conexion
         $this->conexion = null;   
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function listadoConsultasMedico($login_medico) //método para mostrar los consultas, es un select a la bbdd
+    {
+        $ahora = new DateTime();
+        $unaSemanaMas = date('Y-m-d', strtotime("+1 week"));
+        $sentencia = "select * from consulta where fecha between '" . date_format($ahora, 'Y-m-d') . "' and '" . $unaSemanaMas . "' and login_medico=:l order by fecha,hora";
+       
+        $stmt = $this->conexion->prepare($sentencia);
+        try {
+            $stmt->execute([
+                ':l'=>$login_medico
+            ]);
+        } catch (PDOException $ex) {
+            die("Error al recuperar: " . $ex->getMessage());
+        }
+        $this->conexion = null;
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
     
 
-    public function comprobarConsultaLibre($fecha,$hora) //método para comprobar si el login está disponible
+    public function comprobarConsultaLibre($fecha,$hora,$login_medico) //método para comprobar si el login está disponible
     {
-        $consulta = "select fecha,hora from consulta where fecha=:f and hora= :h";
+        $consulta = "select fecha,hora,login_medico from consulta where fecha=:f and hora= :h and login_medico=:l";
         $stmt = $this->conexion->prepare($consulta);
         try {
             $stmt->execute([
                 ':f' => $fecha,
-                ':h' => $hora]);
+                ':h' => $hora,
+                ':l' =>$login_medico]);
             
         } catch (PDOException $ex) {
             die("Error al recuperar: " . $ex->getMessage());
@@ -59,6 +78,22 @@ class Consulta extends Conexion
             return true;
         }
 
+    }
+
+    
+    public function datosConsulta($id_consulta) //método para mostrar los consultas, es un select a la bbdd
+    {
+        $sentencia = "select * from consulta where id_consulta=?";
+
+        $stmt = $this->conexion->prepare($sentencia);
+        try {
+            $stmt->execute([$id_consulta]);
+            
+        } catch (PDOException $ex) {
+            die("Error al recuperar: " . $ex->getMessage());
+        }
+        $this->conexion = null;   
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function insertarConsulta(Consulta $consulta) //método para realizar la inserción del objeto de clase consulta en la bbdd
@@ -88,7 +123,7 @@ class Consulta extends Conexion
     public function modificarConsulta($fecha,$hora,$login_medico,$DNI,$id)
     {
 
-        $consulta="UPDATE `consulta` SET `fecha` = ?,`hora` = ?,`login_medico` = ?,`DNI` = ? WHERE `id_consulta` = ?";
+        $consulta="update consulta SET fecha = ?,hora = ?,login_medico = ?,DNI = ? WHERE id_consulta = ?";
         try {
             $arrParams=array($fecha,$hora,$login_medico,$DNI,$id);
             $stmt = $this->conexion->prepare($consulta);

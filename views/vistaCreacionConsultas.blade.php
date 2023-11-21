@@ -15,13 +15,12 @@
     <div class="row">
         <div class="col">
 
-            
+            <label class="text-left" for="fecha">Fecha </label> 
             @if(isset($consultaLibre)&& $consultaLibre==false)
-            <label class="text-left" for="nombre">Fecha y hora no disponible </label> 
-            <input type="text" class="form-control" name="consultaACrear" required readonly placeholder="La hora y fecha escogida no están disponibles" >
+            <input type="text" class="form-control" placeholder="Cambie la fecha y la hora" readonly>
+            <input type="text" class="form-control" name="fecha" required min="<?=date('d-m-Y');?>" >
             
             @else
-            <label class="text-left" for="fecha">Fecha </label> 
             <input type="date" class="form-control" min="<?=date('d-m-Y');?>" name="fecha" required >
             @endif
         </div>

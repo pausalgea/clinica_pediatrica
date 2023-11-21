@@ -3,6 +3,7 @@
 require '../vendor/autoload.php';
 
 use Clases\Usuario;
+use Clases\Consulta;
 use Philo\Blade\Blade;
 
 
@@ -37,14 +38,25 @@ session_start();
             $usuarios=(new Usuario())->listadoUsuarios();
             $categoria=(new Usuario())->tipoUsuario($nombre);
             $tipo=$categoria[0];
-
+            if($tipo=="administrativo")
+                $encabezado="Gestión administrativo";
+            if($tipo!="médico")
+            {
                 echo $blade
                 ->view()
                 ->make('vistaUsuarios', compact('titulo', 'encabezado', 'tipo','nombre','usuarios'))
                 ->render();
+            }
+            else
+            {
+                $consultas = (new Consulta())->listadoConsultasMedico($nombre);
+                $encabezado="Listado de consultas para esta semana";
+                echo $blade
+                ->view()
+                ->make('vistaUsuarios', compact('titulo', 'encabezado', 'tipo', 'nombre', 'consultas'))
+                ->render();
 
-
-            //falta medico
+            }
 
 
 
@@ -54,9 +66,13 @@ session_start();
         {
             
             unset($_POST['login']);
-            echo "nos hemos validado mal";
-            error("Error, Nombre de usuario o password incorrecto");
-            header('Location:index.php');
+            $error="Compruebe el login y el password";
+
+            $encabezado = 'Aplicación web Clínica pediátrica';
+            echo $blade
+            ->view()
+            ->make('vistaLogin', compact('titulo','encabezado', 'error'))
+            ->render();
         }
     }
     else
@@ -65,12 +81,10 @@ session_start();
         $nombre=$_SESSION['login'];
         $categoria=(new Usuario())->tipoUsuario($_SESSION['login']);
         $tipo=$categoria[0];
+        if($tipo=="administrativo")
+            $encabezado= "Gestión administrativo";
         echo $blade
         ->view()
         ->make('vistaUsuarios', compact('titulo', 'encabezado', 'tipo','nombre','usuarios'))
         ->render();
     }
-
-
-
-

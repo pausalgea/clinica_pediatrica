@@ -3,7 +3,8 @@
     "description": "Proyecto final de ciclo de Grado Superior DAW",
     "type": "project",
     "require": {
-        "philo/laravel-blade": "^3.1"
+        "philo/laravel-blade": "^3.1",
+        "dompdf/dompdf": "^2.0"
     },
     "license": "GPL",
     

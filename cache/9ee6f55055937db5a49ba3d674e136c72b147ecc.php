@@ -14,20 +14,21 @@
             <label class="text-left" for="loginAModificar">Login </label> 
             <input type="text" class="form-control" name="loginAModificar" value=<?php echo e($login); ?> placeholder=<?php echo e($login); ?> readonly>
         </div>
-        <div class="col">
-            <label class="text-left" for="nombre">Nombre </label> 
-            <input type="text" class="form-control" name="nombre" required>
-        </div>
-        <div class="col">
-            <label class="text-left" for="nombre">Apellidos </label> 
-            <input type="text" class="form-control" name="apellidos" required >
-        </div>
-    </div>
-    <div class="row">
         <div class="col">  
             <label class="text-left" for="password">Password </label>
             <input type="text" class="form-control" name="password" placeholder="Introduzca una contraseña nueva" required>
 
+        </div>
+        <div class="col">
+            <label class="text-left" for="nombre">Nombre </label> 
+            <input type="text" class="form-control" placeholder="Nombre de usuario " name="nombre" required>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <label class="text-left" for="nombre">Apellidos </label> 
+            <input type="text" class="form-control"  placeholder="Apellidos de usuario "name="apellidos" required >
         </div>
         <div class="col">    
             <label class="text-left" for="tipo">Tipo </label>
@@ -46,10 +47,11 @@
 
     </div>
     <br>
-    <button type="submit" class="btn btn-primary" name="modificar" value="Modificar">Modificar</button> 
-    <button type="reset" class="btn btn-success">Limpiar</button>
-    <a href="usuarios.php" class="btn btn-info" role="button">Volver</a>
-
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" name="modificar" value="Modificar">Modificar</button> 
+        <button type="reset" class="btn btn-success">Limpiar</button>
+        <a href="usuarios.php" class="btn btn-info" role="button">Volver</a>
+    </div>
 
 
     </div>

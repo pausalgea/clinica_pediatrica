@@ -30,7 +30,7 @@ session_start();
         $hora=$_POST['hora'];
         $login_medico=$_POST['login_medico'];
         $DNI=$_POST['DNI'];
-        $consultaLibre=(new Consulta())->comprobarConsultaLibre($fecha,$hora);
+        $consultaLibre=(new Consulta())->comprobarConsultaLibre($fecha,$hora,$login_medico);
         if($consultaLibre==true)
         {
 
@@ -50,9 +50,12 @@ session_start();
         }
         else
         {
+            
+            $medicos=(new Usuario())->listadoMedicos();
+            $pacientes=(new Paciente())->listarPacientes();
             echo $blade
             ->view()
-            ->make('vistaCreacionConsultas', compact('titulo', 'encabezado', 'consultaLibre'))
+            ->make('vistaCreacionConsultas', compact('titulo', 'encabezado', 'consultaLibre','medicos','pacientes'))
             ->render();
 
         }

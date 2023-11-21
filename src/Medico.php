@@ -37,6 +37,20 @@ class Medico extends Conexion
         }
         $this->conexion = null;
     }
+
+    public function datosMedico($login_medico)
+    {
+        $consulta="select * from medico where login=?";
+        $stmt = $this->conexion->prepare($consulta);
+        try {
+            $stmt->execute([$login_medico]);
+            
+        } catch (PDOException $ex) {
+            die("Error al recuperar: " . $ex->getMessage());
+        }
+        $this->conexion = null;   
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
     
     /**
      * Get the value of login

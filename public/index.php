@@ -4,7 +4,6 @@
 
 require '../vendor/autoload.php';
 
-use Clases\Usuario;
 use Philo\Blade\Blade;
 
 $views = '../views';

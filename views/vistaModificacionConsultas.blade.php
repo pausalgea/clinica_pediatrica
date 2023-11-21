@@ -21,15 +21,19 @@
     </div>
     <div class="row">
         <div class="col">  
-            <label class="text-left" for="fecha">Fecha </label>      
-            <input type="date" class="form-control" min="<?=date('d-m-Y');?>" name="fecha" id="fecha" required/>
-
+            <label class="text-left" for="fecha">Fecha </label> 
+            @if(isset($consultaLibre)&& $consultaLibre==false)
+            <input type="text" class="form-control" placeholder="Cambie la fecha y la hora" readonly>
+            <input type="date" class="form-control" name="fecha" required min="<?=date('d-m-Y');?>" >
+            
+            @else
+            <input type="date" class="form-control" min="<?=date('d-m-Y');?>" name="fecha" required >
+            @endif
         </div>
-        <div class="col">  
-            <label class="text-left" for="hora">Hora </label>      
-            <input type="time" class="form-control" name="hora" min="09:00" max="18:00" step="1800" required/>
-
-        </div>
+            <div class="col">
+                <label class="text-left" for="nombre">Hora </label> 
+                <input type="time" class="form-control" name="hora" min="09:00" max="18:00" step="1800" required>
+            </div>
         <div class="col">    
             
             <label class="text-left" for="login_medico">Login médico </label>

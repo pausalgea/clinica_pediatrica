@@ -10,10 +10,12 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title><?php echo $__env->yieldContent('titulo'); ?></title>
 </head>
-<body style="background:#30a3e6">
+<body style="background:#30a3e6;color=#ffffff;">
 
-<div class="container mt-3">
-    <h3 class="text-center mt-3 mb-3"><?php echo $__env->yieldContent('encabezado'); ?></h3>
+<div class="container" style="text-align:center;font-size:25px;color:white;padding-top:1%;">
+    <?php echo $__env->yieldContent('encabezado'); ?>
+</div>
+<div class="container">
     <?php echo $__env->yieldContent('contenido'); ?>
 </div>
 

@@ -44,6 +44,7 @@ session_start();
             {
                 $medicoNuevo=new Medico();
                 $medicoNuevo->setLogin($login);
+                $medicoNuevo->setDNI($dni);
                 $medicoNuevo->setNombre($nombreU);
                 $medicoNuevo->setApellidos($apellidos);
                 (new Medico())->insertarMedico($medicoNuevo);

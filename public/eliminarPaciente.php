@@ -2,8 +2,7 @@
 
 require '../vendor/autoload.php';
 
-use Clases\Consulta;
-use Clases\Usuario;
+use Clases\paciente;
 use Philo\Blade\Blade;
 
 
@@ -11,7 +10,7 @@ $views = '../views';
 $cache = '../cache';
 $blade = new Blade($views, $cache);
 $titulo = '';
-$encabezado = 'Listado de usuarios del sistema';
+$encabezado = 'Listado de pacientes del sistema';
 session_start();
 
     function error($mensaje)
@@ -21,19 +20,18 @@ session_start();
         die();
     }
     
-    if (isset($_GET['id'])) { //si la variable eliminar está definida, significa que el usuario
+    if (isset($_GET['DNI'])) { //si la variable eliminar está definida, significa que el usuario
         // ha pulsado el botón eliminar
-        $id_consulta=$_GET['id'];
+        $DNI_paciente=$_GET['DNI'];
 
-            $con=new Consulta();
-            $con->eliminarConsulta($id_consulta);
-            $consultas=(new Consulta())->listadoConsultas();
+            $pac=new Paciente();
+            $pac->eliminarPaciente($DNI_paciente);
+            $pacientes=(new paciente())->listarPacientes();
             $nombre=$_SESSION['login'];
-            $encabezado="Listado de consultas para esta semana";
 
             echo $blade
             ->view()
-            ->make('vistaConsultas', compact('titulo', 'encabezado', 'nombre','consultas'))
+            ->make('vistaPacientes', compact('titulo', 'encabezado', 'nombre','pacientes'))
             ->render();
         }
 
