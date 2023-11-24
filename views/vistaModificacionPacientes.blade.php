@@ -43,7 +43,7 @@
 
         </div>
         <br>
-        <div class="center">
+        <div class="text-center">
         <button type="submit" class="btn btn-primary" name="modificar" value="Modificar">Modificar</button>
         <button type="reset" class="btn btn-success">Limpiar</button>
         <a href="gestionPaciente.php" class="btn btn-info" role="button">Volver</a>
