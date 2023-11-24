@@ -15,11 +15,7 @@
         <div class="row">
             <div class="col">
                 <label class="text-left" for="DNI">DNI del paciente </label> 4
-<<<<<<< HEAD
                 <input type="text" class="form-control" name="DNI" value={{$DNI}} placeholder={{$DNI}} readonly>
-=======
-                <input type="text" class="form-control" name="DNI" value={{DNI}} placeholder={{$DNI}} readonly>
->>>>>>> f9b92fbb1822d02bfb5604049a934146d08a26df
             </div>
             <div class="col">
                 <label class="text-left" for="nombre">Nombre </label>
@@ -47,10 +43,11 @@
 
         </div>
         <br>
+        <div class="center">
         <button type="submit" class="btn btn-primary" name="modificar" value="Modificar">Modificar</button>
         <button type="reset" class="btn btn-success">Limpiar</button>
         <a href="gestionPaciente.php" class="btn btn-info" role="button">Volver</a>
-
+        </div>
 
 
     </div>
