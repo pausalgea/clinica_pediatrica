@@ -1,4 +1,6 @@
 <?php
+//Clase Factura.php realizada por Paula Salicio
+//en esta clase vamos a generar el formato que va a tener el pdf del archivo factura
 use Clases\Paciente;
 use Clases\Medico;
 use Clases\Consulta;

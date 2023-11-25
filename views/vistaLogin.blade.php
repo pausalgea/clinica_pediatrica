@@ -1,3 +1,4 @@
+<!--código css -->
 <style>
   .fondo {
   background-image: url("../public/images/imagen_fondo.jpg");
@@ -25,7 +26,7 @@
 
 
   </style>
-@extends('plantillas.plantilla1')
+@extends('plantillas.plantilla1') <!-- hacemos uso de la plantilla1  -->
 @section('titulo')
     {{$titulo}}
 @endsection

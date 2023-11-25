@@ -1,4 +1,4 @@
-<?php //clase Consulta que hereda de Conexión
+<?php //clase Consulta.php realizada por Paula Salicio que hereda de Conexión
 namespace Clases;
 use DateTime;
 use PDO;
@@ -7,7 +7,7 @@ use PDOException;
 
 class Consulta extends Conexion
 {
-    private int $id;
+    private int $id; //atributos de Consulta
     private string $fecha;
     private string $hora;
     private string $login_medico;
@@ -18,7 +18,7 @@ class Consulta extends Conexion
         parent::__construct();
     }
 
-    public function listadoConsultas() //método para mostrar los consultas, es un select a la bbdd
+    public function listadoConsultas() //método para mostrar los consultas de hoy a una semana más, es un select a la bbdd
     {
         $ahora=new DateTime();
         $unaSemanaMas = date('Y-m-d'  , strtotime("+1 week"));
@@ -35,7 +35,7 @@ class Consulta extends Conexion
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function listadoConsultasMedico($login_medico) //método para mostrar los consultas, es un select a la bbdd
+    public function listadoConsultasMedico($login_medico) //método para mostrar los consultas por médico, es un select a la bbdd
     {
         $ahora = new DateTime();
         $unaSemanaMas = date('Y-m-d', strtotime("+1 week"));
@@ -54,7 +54,7 @@ class Consulta extends Conexion
     }
     
 
-    public function comprobarConsultaLibre($fecha,$hora,$login_medico) //método para comprobar si el login está disponible
+    public function comprobarConsultaLibre($fecha,$hora,$login_medico) //método para comprobar si la cosulta está disponible
     {
         $consulta = "select fecha,hora,login_medico from consulta where fecha=:f and hora= :h and login_medico=:l";
         $stmt = $this->conexion->prepare($consulta);
@@ -81,7 +81,7 @@ class Consulta extends Conexion
     }
 
     
-    public function datosConsulta($id_consulta) //método para mostrar los consultas, es un select a la bbdd
+    public function datosConsulta($id_consulta) //método para mostrar los datos de una consulta, es un select a la bbdd
     {
         $sentencia = "select * from consulta where id_consulta=?";
 
@@ -120,7 +120,7 @@ class Consulta extends Conexion
         
 
     }
-    public function modificarConsulta($fecha,$hora,$login_medico,$DNI,$id)
+    public function modificarConsulta($fecha,$hora,$login_medico,$DNI,$id) //método para realizar la modificacion de  consulta en la bbdd
     {
 
         $consulta="update consulta SET fecha = ?,hora = ?,login_medico = ?,DNI = ? WHERE id_consulta = ?";
@@ -136,7 +136,7 @@ class Consulta extends Conexion
         $this->conexion = null;
     }
 
-    public function eliminarConsulta($id)
+    public function eliminarConsulta($id) //método para realizar la eliminación del objeto de clase consulta en la bbdd
     {
         $consulta="DELETE from `consulta` WHERE `id_consulta` = ?";
         try{
@@ -150,7 +150,7 @@ class Consulta extends Conexion
 
     }
     
-
+    //getters y setters de atributos
     /**
      * Get the value of id
      */ 

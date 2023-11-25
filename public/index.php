@@ -1,5 +1,7 @@
 
 <?php
+//Clase index.php realizada por Paula Salicio
+//primer fichero que se va a ejecutar en el servidor
 
 
 require '../vendor/autoload.php';

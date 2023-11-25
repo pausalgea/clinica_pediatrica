@@ -1,4 +1,4 @@
-<?php //clase Factura que hereda de Conexión
+<?php //clase Factura que hereda de Conexión realizada por Paula Salicio
 namespace Clases;
 use DateTime;
 use PDO;
@@ -8,13 +8,13 @@ use PDOException;
 class Factura extends Conexion
 {
 
-    private int $n_factura;
+    private int $n_factura; //atributos
     private float $importe;
     private string $fecha;
 
     private int $id_consulta;
 
-    public function datosFactura($id)
+    public function datosFactura($id) //obtener datos de factura a partir del id de consulta
     {
         $consulta="select id_consulta,max(n_factura) as n_factura,importe,fecha from factura where id_consulta=?";
         $stmt = $this->conexion->prepare($consulta);
@@ -27,7 +27,8 @@ class Factura extends Conexion
         $this->conexion = null;   
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    public function insertarFactura(Factura $fac)
+    public function insertarFactura(Factura $fac) //insertamos el objeto factura en la tabla de facturas
+    //debemos comprobar si el paciente es asegurado o no
     {
         $sentencia_asegurado="select * from asegurado where dni in (select dni from consulta where id_consulta=?)";
 
@@ -42,13 +43,11 @@ class Factura extends Conexion
 
         if($filas>0)
         {
-    
-    
-            $this->setImporte(30.0);
+            $this->setImporte(30.0); //si el paciente es asegurado importe 30€
         }
         else
         {
-            $this->setImporte(80.0);
+            $this->setImporte(80.0); //si no es asegurado importe 80€
         }
   
 
@@ -73,7 +72,7 @@ class Factura extends Conexion
 
 
 
-
+        //getters y setters de atributos
 
     /**
      * Get the value of n_factura

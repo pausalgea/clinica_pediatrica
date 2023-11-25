@@ -7,7 +7,7 @@ use PDOException;
 class Paciente extends Conexion
 {
 
-    private string $DNI;
+    private string $DNI; //atributos
     private string $nombre;
     private string $apellidos;
     private string $fecha_nacimiento;
@@ -15,7 +15,7 @@ class Paciente extends Conexion
 
     
 
-    public function listarPacientes()
+    public function listarPacientes() //select de todos los pacientes
     {
         $consulta="select * from paciente";
         $stmt = $this->conexion->prepare($consulta);
@@ -29,7 +29,7 @@ class Paciente extends Conexion
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function datosPaciente($DNI)
+    public function datosPaciente($DNI) //select de datos de un paciente
     {
         $consulta="select * from paciente where DNI=?";
         $stmt = $this->conexion->prepare($consulta);
@@ -63,7 +63,7 @@ class Paciente extends Conexion
         }
     }
 
-    public function insertarPaciente(Paciente $paciente)
+    public function insertarPaciente(Paciente $paciente) //insert a la tabla paciente
     {
     $consulta = "insert into paciente(DNI,nombre,apellidos,fecha_nacimiento,telefono)
         values (?,?,?,?,?)";
@@ -84,7 +84,7 @@ class Paciente extends Conexion
 
     }
 
-    public function modificarPaciente($nombre, $apellidos, $fecha_nacimiento, $telefono, $DNI)
+    public function modificarPaciente($nombre, $apellidos, $fecha_nacimiento, $telefono, $DNI) //update a la tabla paciente
     {
 
         $consulta = "UPDATE `paciente` SET `nombre` = ?,`apellidos` = ?,`fecha_nacimiento` = ?,`telefono` = ? WHERE `DNI` = ?";
@@ -99,7 +99,7 @@ class Paciente extends Conexion
     }
 
 
-    public function eliminarPaciente($DNI)
+    public function eliminarPaciente($DNI) //delete a la tabla paciente 
     {
         $consulta = "DELETE from `paciente` WHERE `DNI` = ?";
         try {
@@ -113,6 +113,7 @@ class Paciente extends Conexion
 
     }
 
+    //getters y setters
     /**
      * Get the value of DNI
      */ 

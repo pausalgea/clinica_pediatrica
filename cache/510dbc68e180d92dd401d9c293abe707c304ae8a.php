@@ -1,3 +1,4 @@
+<!-- hacemos uso de la plantilla1  -->
 <?php $__env->startSection('titulo'); ?>
 <?php echo e($titulo); ?>
 

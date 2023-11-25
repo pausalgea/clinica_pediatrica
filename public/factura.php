@@ -1,7 +1,10 @@
 <?php
+//Clase Factura.php realizada por Paula Salicio
+//en esta clase vamos a generar el formato que va a tener el pdf del archivo factura
 use Clases\Paciente;
 use Clases\Factura;
 
+//tenemos una imagen con el logo dela clinica, hacemos una conversión a formato base64 de la imagen
 $nombreImagen = "images/LogoFactory.jpg";
 $imagenBase64 = "data:image/jpg;base64," . base64_encode(file_get_contents($nombreImagen));
 
@@ -34,9 +37,9 @@ $datosFactura=(new Factura)->datosFactura($SESSION['IDC']);
 
 <button type="button" class="btn btn-secondary">Fecha: <?php foreach($datosFactura as $datosF){
 $arFecha = explode('-',$datosF->fecha);  
-    //ahora inviertes el array fecha
+    //invertimos el array fecha, para obtener la fecha en formato dd-mm-YY
     $arInvFecha = array_reverse($arFecha);
-    //Por último pegas los elementos del array mediante la -
+    //pegamos los elementos del array mediante la -
     $final = implode('-',$arInvFecha);
     
     echo $final;}?></button>

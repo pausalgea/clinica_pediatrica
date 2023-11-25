@@ -1,4 +1,5 @@
 <?php
+//Clase gestionConsulta.php realizada por Paula Salicio
 
 require '../vendor/autoload.php';
 

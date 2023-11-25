@@ -1,4 +1,5 @@
 <?php
+//Clase eliminarPaciente.php realizada por Paula Salicio
 
 require '../vendor/autoload.php';
 

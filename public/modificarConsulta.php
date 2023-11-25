@@ -1,4 +1,5 @@
 <?php
+//Clase modificarConsulta.php realizada por Paula Salicio
 
 require '../vendor/autoload.php';
 
@@ -23,7 +24,7 @@ session_start();
     }
     
     if (isset($_POST['modificar'])) { //si la variable modificar está definida, significa que el usuario
-        // ha pulsado el botón modificar
+        // ha pulsado el botón modificar en el formulario
         $id=$_POST['consultaAModificar'];
         $fecha=$_POST['fecha'];
         $hora=$_POST['hora'];
@@ -31,9 +32,9 @@ session_start();
         $DNI=$_POST['DNI'];
         $con=new Consulta();
         $consultaLibre=$con->comprobarConsultaLibre($fecha,$hora,$login_medico);
-        if($consultaLibre==true)
+        if($consultaLibre==true) //comprobamos si la consulta está libre para el día , hora y médico
         {
-            (new Consulta())->modificarConsulta($fecha,$hora,$login_medico,$DNI,$id);
+            (new Consulta())->modificarConsulta($fecha,$hora,$login_medico,$DNI,$id); //hacemos el update
             $consultas=(new Consulta())->listadoConsultas();
             $nombre=$_SESSION['login'];
 
@@ -42,7 +43,7 @@ session_start();
             ->make('vistaConsultas', compact('titulo', 'encabezado','nombre','consultas'))
             ->render();
         }
-        else
+        else //no está libre
         {
             $id_consulta=$id;
             $medicos=(new Usuario())->listadoMedicos();

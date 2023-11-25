@@ -1,4 +1,5 @@
-<!doctype html>
+<!doctype html><!-- Plantilla que vamos a usar de base para la aplicación establecemos elementos comunes a las páginas
+    el color de fondo la letra, etc...-->
 <html lang="es">
 <head>
     <meta charset="UTF-8">

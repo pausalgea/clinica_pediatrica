@@ -1,4 +1,4 @@
-<?php //clase Asegurado que hereda de Paciente
+<?php //clase No_Asegurado realizada por Paula Salicio que hereda de Paciente
 namespace Clases;
 use PDO;
 use PDOException;
@@ -6,12 +6,12 @@ use PDOException;
 
 class No_Asegurado extends Paciente
 {
-    private string $DNI;
+    private string $DNI; //atributos
     private string $N_Seguridad_Social;
 
 
 
-    public function insertarNoAsegurado(No_Asegurado $no_aseg)
+    public function insertarNoAsegurado(No_Asegurado $no_aseg) //función para hacer un insert a la tabla no_asegurado
     {
         $consulta = "insert into no_asegurado(N_Seguridad_Social,DNI)
         values (?,?)";
@@ -32,7 +32,7 @@ class No_Asegurado extends Paciente
 
     }
 
-
+    //Funciones getters y setters
     /**
      * Get the value of DNI
      */ 

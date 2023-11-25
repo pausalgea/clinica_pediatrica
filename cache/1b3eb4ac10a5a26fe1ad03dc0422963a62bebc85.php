@@ -1,3 +1,4 @@
+<!--código css -->
 <style>
   .fondo {
   background-image: url("../public/images/imagen_fondo.jpg");
@@ -25,7 +26,7 @@
 
 
   </style>
-
+ <!-- hacemos uso de la plantilla1  -->
 <?php $__env->startSection('titulo'); ?>
     <?php echo e($titulo); ?>
 

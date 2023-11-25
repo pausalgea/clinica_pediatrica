@@ -1,4 +1,5 @@
 <?php
+//Clase crearusuario.php realizada por Paula Salicio
 
 require '../vendor/autoload.php';
 
@@ -7,14 +8,14 @@ use Clases\Usuario;
 use Philo\Blade\Blade;
 
 
-$views = '../views';
+$views = '../views'; //variables para usar en las plantillas de blade
 $cache = '../cache';
 $blade = new Blade($views, $cache);
 $titulo = '';
 $encabezado = 'Creación de un nuevo usuario';
 session_start();
 
-    function error($mensaje)
+    function error($mensaje) //funcion para controlar errorres
     {
         $_SESSION['error'] = $mensaje;
         header('Location:index.php');
@@ -25,7 +26,7 @@ session_start();
         // ha pulsado el botón crear
         $login=$_POST['loginACrear'];
         $loginLibre=(new Usuario())->comprobarLoginLibre($login);
-        if($loginLibre==true)
+        if($loginLibre==true) //comprobamos que el login esté disponible
         {
             $pass=$_POST['password'];
             $tipo=$_POST['tipo'];
@@ -40,7 +41,7 @@ session_start();
             $usuarioNuevo->setApellidos($apellidos);
             $usuarioNuevo->setDNI($dni);
             (new Usuario())->insertarUsuario($usuarioNuevo);
-            if($tipo=="médico")
+            if($tipo=="médico") //si el usuario es tipo médico hacemos un insert a la tabla médico
             {
                 $medicoNuevo=new Medico();
                 $medicoNuevo->setLogin($login);

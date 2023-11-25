@@ -1,4 +1,4 @@
-<?php
+<?php //Clase crearConsulta.php realizada por Paula Salicio
 
 require '../vendor/autoload.php';
 
@@ -9,14 +9,14 @@ use Clases\Usuario;
 use Philo\Blade\Blade;
 
 
-$views = '../views';
+$views = '../views'; //variables para usar en las plantillas de blade
 $cache = '../cache';
 $blade = new Blade($views, $cache);
 $titulo = '';
 $encabezado = 'Creación de consulta';
 session_start();
 
-    function error($mensaje)
+    function error($mensaje) //funcion para controlar errorres
     {
         $_SESSION['error'] = $mensaje;
         header('Location:index.php');
@@ -24,13 +24,13 @@ session_start();
     }
     
     if (isset($_POST['crear'])) { //si la variable crear está definida, significa que el usuario
-        // ha pulsado el botón crear
+        // ha pulsado el botón crear del formulario, recuperamos valores del formulario
         
         $fecha=$_POST['fecha'];
         $hora=$_POST['hora'];
         $login_medico=$_POST['login_medico'];
         $DNI=$_POST['DNI'];
-        $consultaLibre=(new Consulta())->comprobarConsultaLibre($fecha,$hora,$login_medico);
+        $consultaLibre=(new Consulta())->comprobarConsultaLibre($fecha,$hora,$login_medico); //comprobamos si la fecha y hora elegida están disponibles para crear la consulta
         if($consultaLibre==true)
         {
 
@@ -39,10 +39,10 @@ session_start();
             $con->setHora($hora);
             $con->setLogin_medico($login_medico);
             $con->setDNI($DNI);
-            (new Consulta())->insertarConsulta($con);
+            (new Consulta())->insertarConsulta($con);  //insertamos la consulta
             $consultas=(new Consulta())->listadoConsultas();
             $nombre=$_SESSION['login'];
-            $encabezado="Listado de consultas para esta semana";
+            $encabezado="Listado de consultas para esta semana"; //llamamos a la vista blade vistaConsultas
             echo $blade
             ->view()
             ->make('vistaConsultas', compact('titulo', 'encabezado','nombre','consultas'))
@@ -51,7 +51,7 @@ session_start();
         else
         {
             
-            $medicos=(new Usuario())->listadoMedicos();
+            $medicos=(new Usuario())->listadoMedicos(); //el dia y la hora escogidos no están disponibles
             $pacientes=(new Paciente())->listarPacientes();
             echo $blade
             ->view()
@@ -63,7 +63,7 @@ session_start();
     }
     else{
 
-            $medicos=(new Usuario())->listadoMedicos();
+            $medicos=(new Usuario())->listadoMedicos(); //mostramos en vistaCreacionConsultas el listado de médicos y pacientes
             $pacientes=(new Paciente())->listarPacientes();
             echo $blade
             ->view()

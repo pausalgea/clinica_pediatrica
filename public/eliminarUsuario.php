@@ -1,4 +1,5 @@
 <?php
+//Clase eliminarUsuario.php realizada por Paula Salicio
 
 require '../vendor/autoload.php';
 

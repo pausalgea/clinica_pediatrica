@@ -1,4 +1,5 @@
 <?php
+//Clase usuario.php realizada por Paula Salicio
 
 require '../vendor/autoload.php';
 
@@ -30,7 +31,7 @@ session_start();
             error("Error, El nombre o la contraseña no pueden contener solo espacios en blancos.");
         }
 
-        $resultadoLoginPassword = (new Usuario())->comprobarLoginYPassword($nombre,$pass);
+        $resultadoLoginPassword = (new Usuario())->comprobarLoginYPassword($nombre,$pass);//comprobamos que el login y password corresponden
         if($resultadoLoginPassword==false)
         {
         //Nos hemos validado correctamente creamos la sesion de usuario con elnombre de usuario
@@ -66,7 +67,7 @@ session_start();
         {
             
             unset($_POST['login']);
-            $error="Compruebe el login y el password";
+            $error="Compruebe el login y el password"; //no es correcto el login y/o password
 
             $encabezado = 'Aplicación web Clínica pediátrica';
             echo $blade

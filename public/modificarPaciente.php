@@ -1,4 +1,5 @@
 <?php
+//Clase modificarPaciente.php realizada por Paula Salicio
 
 require '../vendor/autoload.php';
 
@@ -21,7 +22,7 @@ session_start();
     }
     
     if (isset($_POST['modificar'])) { //si la variable modificar está definida, significa que el usuario
-        // ha pulsado el botón modificar
+        // ha pulsado el botón modificar en el formulario
         $DNI=$_POST['DNI'];
         $con=new Paciente();
 

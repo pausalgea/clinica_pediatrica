@@ -1,4 +1,4 @@
-<?php //clase Medico que hereda de Conexión
+<?php //clase Medico que hereda de Conexión realizada por Paula Salicio
 namespace Clases;
 use DateTime;
 use PDO;
@@ -7,7 +7,7 @@ use PDOException;
 
 class Medico extends Conexion
 {
-    private string $login;
+    private string $login; //atributos médicos
     private ?string $DNI="";
     private string $nombre;
     private string $apellidos;
@@ -17,7 +17,7 @@ class Medico extends Conexion
         parent::__construct();
     }
 
-    public function insertarMedico(Medico $medico)
+    public function insertarMedico(Medico $medico) //insert
     {
         $sentencia = "insert into medico(login,DNI,nombre,apellidos)
         values (?,?,?,?)";
@@ -38,7 +38,7 @@ class Medico extends Conexion
         $this->conexion = null;
     }
 
-    public function datosMedico($login_medico)
+    public function datosMedico($login_medico) //select datos medico a partir del login
     {
         $consulta="select * from medico where login=?";
         $stmt = $this->conexion->prepare($consulta);
@@ -52,6 +52,8 @@ class Medico extends Conexion
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
     
+
+    //getters y setters de atributos
     /**
      * Get the value of login
      */ 

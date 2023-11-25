@@ -1,18 +1,21 @@
 <?php
+//Clase Conexión.php realizada por Paula Salicio
+//con esta clase nos vamos a conectar a la base de datos todas las demas clases del modelo heredarán de ella
+//si quisieramos cambiar la configuración de la base de datos lo haremos en este fichero
 namespace Clases;
 use PDO;
 use PDOException;
 
 class Conexion
 {
-    private $host;
+    private $host; //atributos de conexion
     private $db;
     private $user;
     private $pass;
     private $dsn;
     protected $conexion;
 
-    public function __construct()
+    public function __construct() //constructor
     {
         $this->host = "localhost";
         $this->db = "clinica";
@@ -22,7 +25,7 @@ class Conexion
         $this->conexion=$this->crearConexion();
     }
 
-    public function crearConexion()
+    public function crearConexion() //funcion crearConexion
     {
         try {
             $conexion = new PDO($this->dsn, $this->user, $this->pass);
@@ -33,7 +36,7 @@ class Conexion
         
         return $conexion;
     }
-    function cerrar(&$con){
+    function cerrar(&$con){ //funcion cerrar conexion
         $con = null;
         }
     /**

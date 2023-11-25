@@ -1,11 +1,14 @@
 <?php
+//Clase generarJustificante.php realizada por Paula Salicio
+//En esta clase mediante DOMPdf vamos a obtener el pdf del justificante
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
 require '../vendor/autoload.php';
 
 $SESSION['DNIP']=$_GET['DNI'];
 $SESSION['IDC']=$_GET['id_consulta'];
 $SESSION['LOGINM']=$_GET['login'];
-// reference the Dompdf namespace
-use Dompdf\Dompdf;
+
 
 // instantiate and use the dompdf class
 $dompdf = new Dompdf();

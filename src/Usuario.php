@@ -1,4 +1,4 @@
-<?php //clase Usuario que hereda de Conexión
+<?php //clase Usuario que hereda de Conexión realizada por Paula Salicio
 namespace Clases;
 use PDO;
 use PDOException;
@@ -6,7 +6,7 @@ use PDOException;
 
 class Usuario extends Conexion
 {
-    private $login;
+    private $login; //atributos
     private $password;
     private $tipo;
 
@@ -40,7 +40,7 @@ class Usuario extends Conexion
     }
     
 
-    public function comprobarLoginYPassword($login,$password)
+    public function comprobarLoginYPassword($login,$password) //método para comprobar el login y password si son correctos
     {
         $consulta = "select login,password from usuario where login=:l and password=:p";
         $stmt = $this->conexion->prepare($consulta);
@@ -65,7 +65,7 @@ class Usuario extends Conexion
         }
     }
 
-    public function tipoUsuario($login)
+    public function tipoUsuario($login) //obtenemos el tipo de usuario
     {
         $consulta = "select tipo from usuario where login= ?";
         $stmt = $this->conexion->prepare($consulta);
@@ -128,7 +128,7 @@ class Usuario extends Conexion
         
 
     }
-    public function modificarUsuario($password,$tipo,$nombre,$apellidos,$DNI,$login)
+    public function modificarUsuario($password,$tipo,$nombre,$apellidos,$DNI,$login) //metodo para modificar usuario update
     {
 
         $consulta="UPDATE `usuario` SET `password` = ?, `tipo` = ?, `nombre`=?, `apellidos`=?, `DNI`=? WHERE `login` = ?";
@@ -145,7 +145,7 @@ class Usuario extends Conexion
         $this->conexion = null;
     }
 
-    public function eliminarUsuario($login)
+    public function eliminarUsuario($login) //metodo para eliminar un usuario
     {
         $consulta="DELETE from `usuario` WHERE `login` = ?";
         try{
@@ -159,7 +159,7 @@ class Usuario extends Conexion
 
     }
 
-    public function listadoMedicos()
+    public function listadoMedicos() //listado de los usuario que son médicos
     {
         $consulta = "select * from usuario where tipo='médico'";
         $stmt = $this->conexion->prepare($consulta);
