@@ -75,15 +75,14 @@
 
 </div>
 
-<<<<<<< HEAD
+
 <div class="text-center">
 
     <a href="usuarios.php" class="btn btn-info" role="button">Volver</a>
 
     </div>
-=======
 
->>>>>>> f9b92fbb1822d02bfb5604049a934146d08a26df
+
 
 
 

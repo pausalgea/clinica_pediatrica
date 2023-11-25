@@ -17,6 +17,7 @@
             <div class="col">
                 <label class="text-left" for="DNI">DNI del paciente </label> 4
                 <input type="text" class="form-control" name="DNI" value=<?php echo e($DNI); ?> placeholder=<?php echo e($DNI); ?> readonly>
+
             </div>
             <div class="col">
                 <label class="text-left" for="nombre">Nombre </label>
@@ -44,11 +45,12 @@
 
         </div>
         <br>
+        <div class="text-center">
         <button type="submit" class="btn btn-primary" name="modificar" value="Modificar">Modificar</button>
         <button type="reset" class="btn btn-success">Limpiar</button>
         <a href="gestionPaciente.php" class="btn btn-info" role="button">Volver</a>
 
-
+        </div>
 
     </div>
 </form>

@@ -58,11 +58,12 @@
 
     </div>
     <br>
+    <div class="text-center">
     <button type="submit" class="btn btn-primary" name="crear" value="Crear">Crear</button> 
     <button type="reset" class="btn btn-success">Limpiar</button>
     <a href="gestionConsulta.php" class="btn btn-info" role="button">Volver</a>
 
-
+    </div>
 
     </div>
 </form>
