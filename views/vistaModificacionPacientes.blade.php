@@ -48,13 +48,10 @@
         <button type="submit" class="btn btn-primary" name="modificar" value="Modificar">Modificar</button>
         <button type="reset" class="btn btn-success">Limpiar</button>
         <a href="gestionPaciente.php" class="btn btn-info" role="button">Volver</a>
-<<<<<<< HEAD
+
 
         </div>
-=======
-        </div>
 
->>>>>>> 546e56a7f3aad6ddb517cbbcd4cb1c0fcbc5f0d5
 
     </div>
 </form>
